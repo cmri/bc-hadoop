@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+  <name>dfs.http.address0</name>
+  <value>hostname_active_master:50070</value>
+  <description>
+    The address and the base port where the dfs namenode web ui will listen on.
+    If the port is 0 then the server will start on a free port.
+  </description>
+</property>
+
+<property>
+  <name>dfs.http.address1</name>
+  <value>hostname_standby_master:50070</value>
+  <description>
+    The address and the base port where the dfs namenode web ui will listen on.
+    If the port is 0 then the server will start on a free port.
+  </description>
+</property>
+
+
+<property>
+  <name>dfs.name.dir</name>
+  <value>${hadoop.tmp.dir}/dfs/name</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.name.edits.dir</name>
+  <value>${hadoop.tmp.dir}/dfs/edits</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the transaction (edits) file. If this is a comma-delimited list
+      of directories then the transaction file is replicated in all of the
+      directories, for redundancy. Default value is same as dfs.name.dir
+  </description>
+</property>
+
+<property>
+  <name>dfs.name.dir.shared0</name>
+  <value>/mnt/nfs/dfs/shared0</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy.</description>
+</property>
+
+<property>
+  <name>dfs.name.dir.shared1</name>
+  <value>/mnt/nfs/dfs/shared1</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.name.edits.dir.shared0</name>
+  <value>/mnt/nfs/dfs/edits0</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.name.edits.dir.shared1</name>
+  <value>/mnt/nfs/dfs/edits1</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+
+<property>
+  <name>dfs.web.ugi</name>
+  <value>webuser,webgroup</value>
+  <description>The user account used by the web interface.
+    Syntax: USERNAME,GROUP1,GROUP2, ...
+  </description>
+</property>
+
+<property>
+  <name>dfs.data.dir</name>
+  <value>/data1/dfs/data,/data2/dfs/data,/data3/dfs/data</value>
+  <description>Determines where on the local filesystem an DFS data node
+  should store its blocks.  If this is a comma-delimited
+  list of directories, then data will be stored in all named
+  directories, typically on different devices.
+  Directories that do not exist are ignored.
+  </description>
+</property>
+
+<property>
+  <name>dfs.replication</name>
+  <value>3</value>
+  <description>Default block replication.
+  The actual number of replications can be specified when the file is created.
+  The default is used if replication is not specified in create time.
+  </description>
+</property>
+
+
+<property>
+  <name>dfs.datanode.failed.volumes.tolerated</name>
+    <value>1</value>
+</property>
+
+<property>
+  <name>dfs.support.append</name>
+    <value>true</value>
+      <description>Does HDFS allow appends to files?</description>
+      </property>
+<property>
+  <name>dfs.namenode.logging.level</name>
+    <value>info</value>
+      <description>The logging level for dfs namenode. Other values are "dir"(trac
+      e namespace mutations), "block"(trace block under/over replications and block
+      creations/deletions), or "all".</description>
+      </property>
+
+<property>
+        <name>dfs.datanode.handler.count</name>
+          <value>50</value>
+            <description>The number of server threads for the datanode.</description>
+            </property>
+
+<property>
+  <name>dfs.permissions</name>
+    <value>false</value>
+      <description>
+          If "true", enable permission checking in HDFS.
+              If "false", permission checking is turned off,
+                  but all other behavior is unchanged.
+                      Switching from one parameter value to the other does not change the mode,
+                          owner or group of files or directories.
+                            </description>
+                            </property>
+
+
+<property>
+  <name>dfs.block.size</name>
+    <value>536870912</value>
+      <description>The default block size for new files.</description>
+      </property>
+
+      <property>
+        <name>dfs.safemode.threshold.pct</name>
+          <value>0.9f</value>
+            <description>
+                Specifies the percentage of blocks that should satisfy 
+                    the minimal replication requirement defined by dfs.replication.min.
+                        Values less than or equal to 0 mean not to wait for any particular
+                            percentage of blocks before exiting safemode.
+                                Values greater than 1 will make safe mode permanent.
+                                  </description>
+                                  </property>
+
+                                  <property>
+                                    <name>dfs.namenode.handler.count</name>
+                                      <value>50</value>
+                                        <description>The number of server threads for the namenode.</description>
+                                        </property>
+                                        <property>
+
+                                          <name>dfs.datanode.max.xcievers</name>
+                                            <value>4096</value>
+                                              <description>
+                                                  Default is 256.
+                                                      Maximal number of concurrent xceivers per node. Enforcing the limit is required
+                                                          in order to avoid data-node running out of memory.
+                                                              Under heavy read load, you may see lots of DFSClient complains about no live nodes
+                                                                  hold a particular block.
+                                                                    </description>
+                                                                    </property>
+
+
+</configuration>

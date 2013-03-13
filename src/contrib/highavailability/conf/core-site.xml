@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+  <name>hadoop.tmp.dir</name>
+  <value>/PATH_TO_HADOOP_TMP/hadoop-${user.name}</value>
+  <description>A base for other temporary directories.</description>
+</property>
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://BIGCLOUD:9000/</value>
+  <description>The name for the cluster. HBase will use this to connect to HDFS. Here 'BIGCLOUD' is just a label, not stand for any physical machine.</description>
+</property>
+
+<property>
+  <name>fs.default.name</name>
+  <value>${fs.defaultFS}</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+<property>
+  <name>fs.default.name0</name>
+  <value>hdfs://hostname_active_master:9000/</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+
+<property>
+  <name>fs.default.name1</name>
+  <value>hdfs://hostname_standby_master:9000/</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+
+<property>
+  <name>io.file.buffer.size</name>
+  <value>524288</value>
+  <description>The size of buffer for use in sequence files.
+  The size of this buffer should probably be a multiple of hardware
+  page size (4096 on Intel x86), and it determines how much data is
+  buffered during read and write operations.</description>
+</property>
+
+<property>
+  <name>io.seqfile.compress.blocksize</name>
+  <value>1000000</value>
+  <description>The minimum block size for compression in block compressed
+          SequenceFiles.
+  </description>
+</property>
+
+<property>
+  <name>fs.ha.zookeeper.quorum</name>
+  <value>IP_of_zookeeper</value>
+</property>
+
+<property>
+  <name>fs.ha.zookeeper.prefix</name>
+  <value>/hdfs</value>
+</property>
+
+
+</configuration>

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<!--
+  This is a sample configuration file for the Fair Scheduler. For details
+  on the options, please refer to the fair scheduler documentation at
+  http://hadoop.apache.org/core/docs/r0.21.0/fair_scheduler.html.
+
+  To create your own configuration, copy this file to conf/fair-scheduler.xml
+  and add the following property in mapred-site.xml to point Hadoop to the
+  file, replacing [HADOOP_HOME] with the path to your installation directory:
+    <property>
+      <name>mapred.fairscheduler.allocation.file</name>
+      <value>[HADOOP_HOME]/conf/fair-scheduler.xml</value>
+    </property>
+
+  Note that all the parameters in the configuration file below are optional,
+  including the parameters inside <pool> and <user> elements. It is only
+  necessary to set the ones you want to differ from the defaults.
+-->
+
+<allocations>
+
+  <!-- Example element for configuring a pool -->
+  <pool name="default">
+    <!-- Minimum shares of map and reduce slots. Defaults to 0. -->
+    <minMaps>20</minMaps>
+    <minReduces>10</minReduces>
+
+    <!-- Limit on running jobs in the pool. If more jobs are submitted,
+      only the first <maxRunningJobs> will be scheduled at any given time.
+      Defaults to infinity or the global poolMaxJobsDefault value below. -->
+    <maxRunningJobs>10</maxRunningJobs>
+
+    <!-- Number of seconds after which the pool can preempt other pools'
+      tasks to achieve its min share. Requires preemption to be enabled in
+      mapred-site.xml by setting mapred.fairscheduler.preemption to true.
+      Defaults to infinity (no preemption). -->
+    <minSharePreemptionTimeout>300</minSharePreemptionTimeout>
+
+    <!-- Pool's weight in fair sharing calculations. Defaulti is 1.0. -->
+    <weight>1.0</weight>
+  </pool>
+
+    <!-- queue list -->
+  <pool name="1_LoadQueue"> 
+      <minMaps>1</minMaps> 
+      <minReduces>1</minReduces> 
+      <weight>1.0</weight> 
+  </pool> 
+
+  <pool name="2_QueryQueue"> 
+      <minMaps>1</minMaps> 
+      <minReduces>1</minReduces> 
+      <weight>1.0</weight> 
+  </pool> 
+
+  <pool name="3_MaintainQueue"> 
+      <minMaps>1</minMaps> 
+      <minReduces>1</minReduces> 
+      <weight>1.0</weight> 
+  </pool> 
+
+  <!-- Example element for configuring a user -->
+  <user name="user1">
+    <!-- Limit on running jobs for the user across all pools. If more
+      jobs than this are submitted, only the first <maxRunningJobs> will
+      be scheduled at any given time. Defaults to infinity or the
+      userMaxJobsDefault value set below. -->
+    <maxRunningJobs>10</maxRunningJobs>
+  </user>
+
+  <!-- Default running job limit pools where it is not explicitly set. -->
+  <poolMaxJobsDefault>50</poolMaxJobsDefault>
+
+  <!-- Default running job limit users where it is not explicitly set. -->
+  <userMaxJobsDefault>50</userMaxJobsDefault>
+
+  <!-- Default min share preemption timeout for pools where it is not
+    explicitly configured, in seconds. Requires mapred.fairscheduler.preemption
+    to be set to true in your mapred-site.xml. -->
+  <defaultMinSharePreemptionTimeout>600</defaultMinSharePreemptionTimeout>
+
+  <!-- Preemption timeout for jobs below their fair share, in seconds. 
+    If a job is below half its fair share for this amount of time, it
+    is allowed to kill tasks from other jobs to go up to its fair share.
+    Requires mapred.fairscheduler.preemption to be true in mapred-site.xml. -->
+  <fairSharePreemptionTimeout>600</fairSharePreemptionTimeout>
+
+</allocations>

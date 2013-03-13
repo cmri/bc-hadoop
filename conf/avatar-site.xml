@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+<property>
+  <name>fs.default.name0</name>
+  <value>hdfs://compute-34-08.local:9000</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+
+<property>
+  <name>fs.default.name1</name>
+  <value>hdfs://compute-34-07.local:9000</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+<property>
+  <name>dfs.http.address0</name>
+  <value>compute-34-08.local:50070</value>
+  <description>
+    The address and the base port where the dfs namenode web ui will listen on.
+    If the port is 0 then the server will start on a free port.
+  </description>
+</property>
+
+<property>
+  <name>dfs.http.address1</name>
+  <value>compute-34-07.local:50070</value>
+  <description>
+    The address and the base port where the dfs namenode web ui will listen on.
+    If the port is 0 then the server will start on a free port.
+  </description>
+</property>
+
+
+<property>
+  <name>dfs.name.dir.shared0</name>
+  <value>/mnt/nfs/dfs/shared0</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.name.dir.shared1</name>
+  <value>/mnt/nfs/dfs/shared1</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.name.edits.dir.shared0</name>
+  <value>/mnt/nfs/dfs/edits0</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.name.edits.dir.shared1</name>
+  <value>/mnt/nfs/dfs/edits1</value>
+  <description>Determines where on the local filesystem the DFS name node
+      should store the name table(fsimage).  If this is a comma-delimited list
+      of directories then the name table is replicated in all of the
+      directories, for redundancy. </description>
+</property>
+
+<property>
+  <name>dfs.namenode.dn-address0</name>
+  <value>hdfs://compute-34-08.local:9000</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+<property>
+  <name>dfs.namenode.dn-address1</name>
+  <value>hdfs://compute-34-07.local:9000</value>
+  <description>The name of the default file system.  A URI whose
+  scheme and authority determine the FileSystem implementation.  The
+  uri's scheme determines the config property (fs.SCHEME.impl) naming
+  the FileSystem implementation class.  The uri's authority is used to
+  determine the host, port, etc. for a filesystem.</description>
+</property>
+
+
+<property>
+  <name>hdfs.avatarnode.handler.count</name>
+  <value>10</value>
+  <description>default: 3.</description>
+</property>
+
+<property>
+  <name>fs.ha.failover.check.period</name>
+  <value>5000</value>
+  <description>when failover happened, the period to check failover is finished. default: 10s.</description>
+</property>
+
+<property>
+  <name>fs.ha.failover.retries</name>
+  <value>6</value>
+  <description>when failover happened, times to check failover is finished. default: 6.</description>
+</property>
+
+<property>
+  <name>fs.ha.retrywrites</name>
+  <value>true</value>
+  <description>default: false.
+  If false - on Mutable call to the namenode we fail
+  If true we try to make the call go through by resolving conflicts
+</description>
+</property>
+
+<!--
+<property>
+  <name>fs.avatar.standbyfs.initinterval</name>
+  <value>600000</value>
+  <description>default: 10 min.
+  default interval between standbyFS initialization attempts (in ms)
+</description>
+</property>
+
+<property>
+  <name>fs.avatar.standbyfs.checkinterval</name>
+  <value>20000</value>
+  <description>default: 5 min.
+  default interval between failover checks (in ms.)
+</description>
+</property>
+
+<property>
+  <name>fs.avatar.standbyfs.checkrequests</name>
+  <value>100</value>
+  <description>default: 5000 requests.
+  default interval between failover checks is 5000 requests
+</description>
+</property>
+-->
+
+<property>
+  <name>fs.ha.zookeeper.quorum</name>
+  <value>compute-34-10.local</value>
+  <description>
+</description>
+</property>
+
+<property>
+  <name>fs.ha.zookeeper.timeout</name>
+  <value>3000</value>
+  <description>
+</description>
+</property>
+
+<property>
+  <name>fs.ha.zookeeper.connect.timeout</name>
+  <value>100</value>
+  <description>
+</description>
+</property>
+
+<property>
+  <name>fs.ha.zookeeper.prefix</name>
+  <value>/hdfs</value>
+  <description>
+</description>
+</property>
+
+</configuration>

@@ -1,0 +1,9 @@
+This release is based on Cloudera's Hadoop Distribution (CDH3U4), you can download the original Hadoop source code and binary from Cloudera's website http://archive.cloudera.com/cdh/3/hadoop-0.20.2-cdh3u4.tar.gz. Patches from the following issues have been applied to this release. This is in addition to the patches applied from issues referenced in CHANGES.txt.
+
+Release BCH-1.0.0 2013-03-01
+
+	BC-Hadoop-6: HDFS NameNode HA. 
+	This is an entension of Facebook's avatar node, you can download the source code from https://github.com/facebook/hadoop-20/tree/master/src/contrib/highavailability. In this solution, there will be two avatar namenodes running in the cluster, one is primary avatarnode and the other is standby avatarnode. Once the primary avatarnode down or disconnected to zookeeper, the standby avatarnode will be the primary avatarnode automatically. 
+
+	BC-Hadoop-9: MapReduce JobTracker HA. 
+	Multi Jobtrackers can run in the cluster, one of them will be elected by zookeeper as the primary Jobtracker, others will hold on and watch the status of primary JobTracker. Once the primary Jobtrakcer is donw or disconnected, zookeeper will elect one backup JobTracker as primary immediatelly. The running jobs will be continued after JobTracker failover, while pending and finished jobs will not be affected.

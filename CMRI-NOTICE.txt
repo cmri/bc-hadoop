@@ -1,0 +1,2 @@
+This product includes patches developed at
+The China Mobile Big Cloud Community (http://labs.chinamobile.com/show/cloud).
